@@ -12,11 +12,12 @@ public enum BallGameColor
     Blue
 }
 
-public class ExposedData
+/*public class ExposedData
 {
-    public SimCapi.SimCapiNumber xCount;
-    public SimCapi.SimCapiNumber yCount;
-    public SimCapi.SimCapiEnum<BallGameColor> color;
+    //public SimCapi.SimCapiNumber xCount;
+    //public SimCapi.SimCapiNumber yCount;
+    //public SimCapi.SimCapiEnum<BallGameColor> color;
+	
 
     public ExposedData()
     {
@@ -32,12 +33,12 @@ public class ExposedData
         yCount.expose("Brick row count", false, false);
         color.expose("Color", false, false);
     }
-}
+}*/
 
 public class BallGame : MonoBehaviour
 {
-    SimCapi.Transporter _transporter;
-    ExposedData _exposedData;
+   // SimCapi.Transporter _transporter;
+   // ExposedData _exposedData;
 
     Blocks _blocks;
     Ball _ball;
@@ -56,9 +57,9 @@ public class BallGame : MonoBehaviour
         bouncePhysicsMaterial.friction = 0;
 
         // Create all the objects for the game, use the _exposedData to initalise the values
-        _blocks = new Blocks(new Vector2(0, 3), (int)_exposedData.xCount.getValue(), (int)_exposedData.yCount.getValue(), bouncePhysicsMaterial);
-        _ball = new Ball(Vector2.zero, bouncePhysicsMaterial, _exposedData.color.getValue());
-        _paddle = new Paddle(new Vector2(0,-3.0f), bouncePhysicsMaterial);
+        //_blocks = new Blocks(new Vector2(0, 3), (int)_exposedData.xCount.getValue(), (int)_exposedData.yCount.getValue(), bouncePhysicsMaterial);
+        //_ball = new Ball(Vector2.zero, bouncePhysicsMaterial, _exposedData.color.getValue());
+       // _paddle = new Paddle(new Vector2(0,-3.0f), bouncePhysicsMaterial);
         Boarders.make(bouncePhysicsMaterial);
 
         _started = true;
@@ -71,11 +72,11 @@ public class BallGame : MonoBehaviour
             return;
 
         _ball.reset();
-        _blocks.resetBlocks(new Vector2(0, 3), (int)_exposedData.xCount.getValue(), (int)_exposedData.yCount.getValue());
-        _paddle.setPosition(new Vector2(0, -3.0f));
+        //_blocks.resetBlocks(new Vector2(0, 3), (int)_exposedData.xCount.getValue(), (int)_exposedData.yCount.getValue());
+        //_paddle.setPosition(new Vector2(0, -3.0f));
     }
 
-    void Start()
+   /* void Start()
     {
         // Get the singleton Transporter
         _transporter = SimCapi.Transporter.getInstance();
@@ -117,13 +118,13 @@ public class BallGame : MonoBehaviour
         // Tell SimCapi we are ready, creates the connection
         _transporter.notifyOnReady();
     }
+*/
 
-
-	void Update ()
+	/*void Update ()
     {
         if (_started == false)
             return;
 
         _paddle.update();
-	}
+	}*/
 }
